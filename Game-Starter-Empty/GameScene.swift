@@ -85,6 +85,9 @@ class GameScene: SKScene {
         //TODO: Have the square run the above animation forever and add the square to the SKScene!
         let animate = SKAction.repeatForever(action)
         square.run(animate)
+
+         //Nothing will show unless you add the squares as child to the scene
+        addChild(square)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -106,6 +109,9 @@ class GameScene: SKScene {
                 node.removeFromParent()
                 score+=1
                 createSquares(name: node.name!)
+
+                // We can't see how many points we have if we don't update the label
+                scoreLabel.text = "\(score)"
                 
             }
         }
